@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Welcome to Collab your projects collaborator
+	</title>
+	<link rel="icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<body>
+<div id="header">
+	<div id="titlefont">
+		Collab
+	</div>
+</div>
+<div class="userlists">
+	<div class="userlistelement">
+			User1
+			<select class="filterselect">
+				<option value="All">All</option>
+				<option value="ToDo">ToDo</option>
+				<option value="Doing">Doing</option>
+				<option value="Done">Done</option>
+			</select>
+		<hr>
+		<div class="tasklistelement">
+			<div class="tasklist tasklisttodo">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+					Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+					Todo
+				</p>
+			</div>
+			<div class="tasklist tasklistdoing">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+					Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+						Doing
+				</p>
+			</div>
+			<div class="tasklist tasklistdoing">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+				Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+					Doing
+				</p>
+			</div>
+			<div class="tasklist tasklistdoing">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+				Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+					Doing
+				</p>
+			</div>
+			<div class="tasklist tasklistdoing">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+				Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+					Doing
+				</p>
+			</div>
+		</div>
+		<img src="add_icon.svg" height="20px" class="add-icon">
+	</div>
+	<div class="userlistelement">
+		User2
+		<select class="filterselect">
+			<option value="All">All</option>
+			<option value="ToDo">ToDo</option>
+			<option value="Doing">Doing</option>
+			<option value="Done">Done</option>
+		</select>
+		<hr>
+		<div class="tasklistelement">
+			<div class="tasklist tasklisttodo">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+					Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+						Todo
+				</p>
+			</div>
+		</div>
+		<img src="add_icon.svg" height="20px" class="add-icon">
+	</div>
+	<div class="userlistelement">
+		User3
+		<select class="filterselect">
+			<option value="All">All</option>
+			<option value="ToDo">ToDo</option>
+			<option value="Doing">Doing</option>
+			<option value="Done">Done</option>
+		</select>
+		<hr>
+		<div class="tasklistelement">
+			<div class="tasklist tasklistdone">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+					Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+						Done
+				</p>
+			</div>
+			<div class="tasklist tasklistdone">
+				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
+					Task1
+				<p class="duedate">
+					<strong>Due date: </strong>30, January 2018
+				</p>
+				<p class="taskdata">
+					<img src="edit_icon.png" height="15px" width="15px" align="top right">
+						Done
+				</p>
+			</div>
+		</div>
+		<img src="add_icon.svg" height="20px">
+	</div>
+	<div class="userlistelement">
+		User4
+		<select class="filterselect">
+			<option value="All">All</option>
+			<option value="ToDo">ToDo</option>
+			<option value="Doing">Doing</option>
+			<option value="Done">Done</option>
+		</select>
+		<hr>
+		<div class="tasklistelement">
+
+		</div>
+		<img src="add_icon.svg" height="20px">
+	</div>
+</div>
+<div id="light" class="white_content">
+	<form id="addtask">
+		Task name<br>
+		<input type="text" id="taskname" name="taskname" required>
+		<br>
+		Task status<br>
+		<select id="taskstatus">
+			<option value="Todo">Todo</option>
+			<option value="Doing">Doing</option>
+			<option value="Done">Done</option>
+		</select>
+		<br>
+		Due date<br>
+		<input type="date" id="duedate" name="duedate" required>
+	</form>
+	<button type="button" form="addtask" value="submit" id="submitbutton">Submit</button>
+	<button value="cancel" id="cancelbutton"> Cancel</button>
+</div>
+<div id="fade" class="black_overlay">
+</div>
+<script type="text/javascript" src="home.js"></script>
+</body>
+</html>

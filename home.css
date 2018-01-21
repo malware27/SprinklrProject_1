@@ -1,0 +1,192 @@
+#header{
+	width: 100%;
+    position: fixed;
+    display: block;        
+    background: #333469;
+    top: 0;
+    left: 0;
+    height: 40px;
+    padding: 10px 0px;
+    color: #fff;
+    margin-bottom: 10px;
+    z-index: 1;
+}
+#titlefont{
+	font-family: "sans-serif";
+	font-size: 28px;
+	text-align: center;
+	font-weight: 600;
+	color: #ffffff;
+	padding: 5px 5px 5px 20px;
+	display: block;
+}
+.userlists{
+	position: relative;
+	top:80px;
+	display: flex;
+	z-index: 0;
+	justify-content: space-between;
+	overflow: auto;
+}
+.list{
+	width: 30%;
+	font-family: "sans-serif";
+}
+.userlistelement{
+	float: left;
+	height: 80%;
+	border-radius: 1px;
+	border-style: solid;
+	text-align: center;
+	font-size: 28px;
+	font-family: "sans-serif";
+	font-weight: 700;
+	padding: 10px 20px 10px 20px;
+	white-space: nowrap;
+	margin: 10px;
+	flex-grow: 1;
+	position: relative;
+	min-width: 250px;
+}
+.userlistelement:hover{
+	box-shadow: 10px 10px 8px #888888;
+}
+.userlistheader{
+	font-size: 22px;
+	font-family: "sans-serif";
+	text-align: center;
+	font-weight: 600;
+	display: flex;
+}
+.tasklist{
+	text-align: center;
+	font-size:20px;
+	font-weight: 600;
+	margin:20px;
+	list-style-type: none;
+	border-bottom: 2px solid;
+	position: relative;
+}
+.tasktitle{
+	font-size: 18px;
+	position: relative;
+	font-weight: 600;
+	text-align: left;
+
+}
+.tasklist:hover{
+	text-align: center;
+	position: relative;
+	font-size: 20px;
+	font-weight: 600;
+	margin:20px;
+	list-style-type: none;
+	box-shadow: 10px 10px 8px #888888;
+}
+.taskdata{
+	opacity: 0;
+	font-size: 16px;
+	font-family: "sans-serif";
+	font-weight: 200;
+}
+.tasklist:hover .taskdata{
+	display: block;
+	opacity: 1;
+	font-size: 16px;
+	font-weight: 200;
+	font-family: "sans-serif";
+}
+.tasklisttodo{
+	background-color: #ff9999;
+}
+.tasklistdoing{
+	background-color: #99b3ff;
+}
+.tasklistdone{
+	background-color: #b3ffb3;
+}
+.duedate{
+	font-size:18px;
+	font-weight: 200;
+	font-family: "sans-serif";
+}
+.delete_icon{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	cursor: pointer;
+}
+.filterselect{
+	position: absolute;
+	top:18px;
+	right:12px;
+}
+.add-icon{
+	cursor: pointer;
+}
+.user-name-header{
+	position: fixed;
+	z-index: 1;
+	width:50px;
+	height: 30px;
+}
+.tasklistelement{
+	height: 580px;
+	overflow: auto;
+}
+.popup{
+	display: none;
+	position: fixed;
+	z-index: 2;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+	left: 0;
+	top: 0;
+}
+.popup-content{
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.black_overlay {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity=80);
+}
+.white_content {
+	display: none;
+	position: absolute;
+	top: 28%;
+	left: 38%;
+	width: 14%;
+	height: 18%;
+	padding: 16px;
+	border: 16px solid #333469;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+}
