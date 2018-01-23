@@ -66,6 +66,7 @@
 	list-style-type: none;
 	border-bottom: 2px solid;
 	position: relative;
+	display: block;
 }
 .tasktitle{
 	font-size: 18px;
@@ -116,10 +117,9 @@
 	left: 0px;
 	cursor: pointer;
 }
-.filterselect{
-	position: absolute;
-	top:18px;
-	right:12px;
+.filtercheckbox{
+	font-size: 14px;
+	font-weight: 200;
 }
 .add-icon{
 	cursor: pointer;
@@ -172,7 +172,7 @@
 	width: 100%;
 	height: 100%;
 	background-color: black;
-	z-index: 1001;
+	z-index: 2;
 	-moz-opacity: 0.8;
 	opacity: .80;
 	filter: alpha(opacity=80);
@@ -187,6 +187,6 @@
 	padding: 16px;
 	border: 16px solid #333469;
 	background-color: white;
-	z-index: 1002;
+	z-index: 3;
 	overflow: auto;
 }
