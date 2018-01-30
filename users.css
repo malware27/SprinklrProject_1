@@ -1,24 +1,29 @@
 #header{
-	width: 100%;
+        width: 100%;
         position: fixed;
-        display: block;        
-        background: #333469;
+        display: block;
+        background-color: rgba(0,0,0,.15);
         top: 0;
         left: 0;
-        height: 40px;
-        padding: 10px 0px;
+        height: 30px;
+        padding: 5px 8px;
         color: #fff;
         margin-bottom: 10px;
         z-index: 1;
 }
+body{
+        background-color: rgb(0, 121, 191);
+}
 #titlefont{
-	font-family: "sans-serif";
-	font-size: 28px;
-	text-align: center;
-	font-weight: 600;
-	color: #ffffff;
-	padding: 5px 5px 5px 20px;
-	display: block;
+        font-family: "sans-serif";
+        font-size: 28px;
+        text-align: center;
+        font-weight: 600;
+        color: #ffffff;
+        line-height: 30px;
+        vertical-align: middle;
+        display: block;
+        cursor: pointer;
 }
 .userslist{
         position: relative;
@@ -29,7 +34,7 @@
         display: inline-block;
         position: relative;
         height: 80%;
-        border-radius: 1px;
+        border-radius: 3px;
         border-style: solid;
         border-color: #00000033;
         font-size: 22px;
@@ -38,11 +43,9 @@
         flex-grow: 1;
         margin:10px;
         text-align: center;
+        background-color: #e2e4e6;
         align-content: center;
         justify-content: center;
-}
-.userelement:hover{
-        box-shadow: 10px 10px 8px #888888;
 }
 .addelement{
         float: left;
@@ -60,6 +63,10 @@
         top:-2px;
         right: 0px;
         cursor: pointer;
+        display: none;
+}
+.userelement:hover .deleteicon{
+        display: block;
 }
 .black_overlay {
         display: none;

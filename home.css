@@ -2,30 +2,40 @@
 	width: 100%;
     position: fixed;
     display: block;        
-    background: #333469;
+    background-color: rgba(0,0,0,.15);
     top: 0;
     left: 0;
-    height: 40px;
-    padding: 10px 0px;
+    height: 30px;
+    padding: 5px 8px;
     color: #fff;
     margin-bottom: 10px;
     z-index: 1;
 }
-#titlefont{
+body{
+	background-color: rgb(0, 121, 191);
+}
+#header-title{
 	font-family: "sans-serif";
 	font-size: 28px;
 	text-align: center;
 	font-weight: 600;
 	color: #ffffff;
-	padding: 5px 5px 5px 20px;
+	line-height: 30px;
+	vertical-align: middle;
 	display: block;
+}
+#users-page-link{
+	position: absolute;
+	top: 20%;
+	left:93%;
+	background-color: white;
+	font-size:20px;
 }
 .userlists{
 	position: relative;
-	top:80px;
+	top:50px;
 	display: flex;
 	z-index: 0;
-	justify-content: space-between;
 	overflow: auto;
 }
 .list{
@@ -35,21 +45,17 @@
 .userlistelement{
 	float: left;
 	height: 80%;
-	border-radius: 1px;
-	border-style: solid;
+	border-radius: 3px;
+	background-color: #e2e4e6;
 	text-align: center;
 	font-size: 28px;
 	font-family: "sans-serif";
 	font-weight: 700;
-	padding: 10px 20px 10px 20px;
+	padding: 0 4px;
 	white-space: nowrap;
-	margin: 10px;
-	flex-grow: 1;
+	margin: 0 5px;
 	position: relative;
-	min-width: 250px;
-}
-.userlistelement:hover{
-	box-shadow: 10px 10px 8px #888888;
+	width:270px;
 }
 .userlistheader{
 	font-size: 22px;
@@ -62,11 +68,15 @@
 	text-align: center;
 	font-size:20px;
 	font-weight: 600;
-	margin:20px;
+	margin:5px;
 	list-style-type: none;
-	border-bottom: 2px solid;
 	position: relative;
 	display: block;
+	border-radius: 3px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	cursor: pointer;
 }
 .tasktitle{
 	font-size: 18px;
@@ -80,7 +90,7 @@
 	position: relative;
 	font-size: 20px;
 	font-weight: 600;
-	margin:20px;
+	margin:5px;
 	list-style-type: none;
 	box-shadow: 10px 10px 8px #888888;
 }
@@ -89,6 +99,7 @@
 	font-size: 16px;
 	font-family: "sans-serif";
 	font-weight: 200;
+	margin: 10px;
 }
 .tasklist:hover .taskdata{
 	display: block;
@@ -115,6 +126,10 @@
 	position: absolute;
 	top: 0px;
 	left: 0px;
+	display: none;
+}
+.tasklist:hover .delete_icon{
+	display: block;
 	cursor: pointer;
 }
 .filtercheckbox{
@@ -123,6 +138,7 @@
 }
 .add-icon{
 	cursor: pointer;
+	width: 100%;
 }
 .user-name-header{
 	position: fixed;
@@ -183,7 +199,7 @@
 	top: 28%;
 	left: 38%;
 	width: 14%;
-	height: 18%;
+	height: 22%;
 	padding: 16px;
 	border: 16px solid #333469;
 	background-color: white;

@@ -9,89 +9,37 @@
 </head>
 <body>
 <div id="header">
-	<div id="titlefont">
+	<div id="titlefont" onclick="window.open('home.html');">
 		Collab
 	</div>
 </div>
 <div class="userslist" id="userlist">
-	<div class="userelement">
-		<img src="delete_icon.png" height="20px" width="20px" align="top right" class="deleteicon">
-		<img src="profile_icon.png" height="100px" width="100px">
-		<br>
-			User1
-		<br>
-		Developer
-		<img src="edit_icon.png" height="20px" width="20px">
-	</div>
-	<div class="userelement">
-		<img src="delete_icon.png" height="20px" width="20px" align="top right" class="deleteicon">
-		<img src="profile_icon.png" height="100px" width="100px">
-		<br>
-			User2
-		<br>
-			Developer
-		<img src="edit_icon.png" height="20px" width="20px">
-
-	</div>
-	<div class="userelement">
-		<img src="delete_icon.png" height="20px" width="20px" align="top right" class="deleteicon">
-		<img src="profile_icon.png" height="100px" width="100px">
-		<br>
-			User3
-		<br>
-			Developer
-		<img src="edit_icon.png" height="20px" width="20px">
-	</div>
-	<div class="userelement">
-		<img src="delete_icon.png" height="20px" width="20px" align="top right" class="deleteicon">
-		<img src="profile_icon.png" height="100px" width="100px">
-		<br>
-			User4
-		<br>
-			Developer
-		<img src="edit_icon.png" height="20px" width="20px">
-	</div>
-	<div class="userelement">
-		<img src="delete_icon.png" height="20px" width="20px" align="top right" class="deleteicon">
-		<img src="profile_icon.png" height="100px" width="100px">
-		<br>
-			User5
-		<br>
-			Developer
-		<img src="edit_icon.png" height="20px" width="20px">
-	</div>
-	<div class="userelement">
-		<img src="delete_icon.png" height="20px" width="20px" align="top right" class="deleteicon">
-		<img src="profile_icon.png" height="100px" width="100px">
-		<br>
-			User6
-		<br>
-			Developer
-		<img src="edit_icon.png" height="20px" width="20px">
-	</div>
-	<div class="userelement">
-		<img src="delete_icon.png" height="20px" width="20px" align="top right" class="deleteicon">
-		<img src="profile_icon.png" height="100px" width="100px">
-		<br>
-			User7
-		<br>
-			Developer
-		<img src="edit_icon.png" height="20px" width="20px">
-	</div>
-	<div class="addelement" id="addbuttondiv">
-		<img src="add_icon.svg" height="40px" width="40px">
-	</div>
 </div>
-<div id="light" class="white_content">
-	<form id="adduser">
+<div id="adduserpopup" class="white_content">
+	<form id="adduser" onsubmit="controller.submitAddUserHandler(event); return false;">
 		User name<br>
 		<input type="text" id="username" name="username" required>
 		<br>
 		User role<br>
 		<input type="text" id="userrole" name="userrole" required>
 	</form>
-	<button type="button" form="adduser" value="submit" id="submitbutton">Submit</button>
-	<button value="cancel" id="cancelbutton"> Cancel</button>
+	<button type="submit" form="adduser" value="submit" id="submitbutton">
+		Submit
+	</button>
+	<button value="cancel" id="cancelbutton" onclick="view.disableAddUserPopup(event)"> Cancel</button>
+</div>
+<div id="edituserpopup" class="white_content">
+	<form id="edituser" onsubmit="controller.submitEditUserHandler(event); return false;">
+		User name<br>
+		<input type="text" id="user-name" name="username" required>
+		<br>
+		User role<br>
+		<input type="text" id="user-role" name="userrole" required>
+	</form>
+	<button type="submit" form="adduser" value="submit" id="submit-button">
+		Submit
+	</button>
+	<button value="cancel" id="cancel-button" onclick="view.disableEditUserPopup(event)"> Cancel</button>
 </div>
 <div id="fade" class="black_overlay">
 </div>

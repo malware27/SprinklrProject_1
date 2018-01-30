@@ -9,161 +9,23 @@
 </head>
 <body>
 <div id="header">
-	<div id="titlefont">
+	<div id="header-title">
 		Collab
 	</div>
-</div>
-<div class="userlists">
-	<div class="userlistelement">
-		User1
-		<form class="filtercheckbox">
-			<input type="checkbox" name="filter" value="All" checked> All
-			<input type="checkbox" name="filter" value="ToDo"> ToDo
-			<input type="checkbox" name="filter" value="Doing"> Doing
-			<input type="checkbox" name="filter" value="Done">   Done
-		</form>
-		<hr>
-		<div class="tasklistelement">
-			<div class="tasklist tasklisttodo">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-					Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-					Todo
-				</p>
-			</div>
-			<div class="tasklist tasklistdoing">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-					Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-						Doing
-				</p>
-			</div>
-			<div class="tasklist tasklistdoing">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-				Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-					Doing
-				</p>
-			</div>
-			<div class="tasklist tasklistdoing">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-				Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-					Doing
-				</p>
-			</div>
-			<div class="tasklist tasklistdoing">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-				Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-					Doing
-				</p>
-			</div>
-		</div>
-		<img src="add_icon.svg" height="20px" class="add-icon">
-	</div>
-	<div class="userlistelement">
-		User2
-		<form class="filtercheckbox">
-			<input type="checkbox" name="filter" value="All" checked> All
-			<input type="checkbox" name="filter" value="ToDo"> ToDo
-			<input type="checkbox" name="filter" value="Doing"> Doing
-			<input type="checkbox" name="filter" value="Done">   Done
-		</form>
-		<hr>
-		<div class="tasklistelement">
-			<div class="tasklist tasklisttodo">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-					Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-						Todo
-				</p>
-			</div>
-		</div>
-		<img src="add_icon.svg" height="20px" class="add-icon">
-	</div>
-	<div class="userlistelement">
-		User3
-		<form class="filtercheckbox">
-			<input type="checkbox" name="filter" value="All" checked> All
-			<input type="checkbox" name="filter" value="ToDo"> ToDo
-			<input type="checkbox" name="filter" value="Doing"> Doing
-			<input type="checkbox" name="filter" value="Done">   Done
-		</form>
-		<hr>
-		<div class="tasklistelement">
-			<div class="tasklist tasklistdone">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-					Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-						Done
-				</p>
-			</div>
-			<div class="tasklist tasklistdone">
-				<img src="delete_icon.png" height="20px" width="20px" align="top right" class="delete_icon">
-					Task1
-				<p class="duedate">
-					<strong>Due date: </strong>30, January 2018
-				</p>
-				<p class="taskdata">
-					<img src="edit_icon.png" height="15px" width="15px" align="top right">
-						Done
-				</p>
-			</div>
-		</div>
-		<img src="add_icon.svg" height="20px">
-	</div>
-	<div class="userlistelement">
-		User4
-		<form class="filtercheckbox">
-			<input type="checkbox" name="filter" value="All" checked> All
-			<input type="checkbox" name="filter" value="ToDo"> ToDo
-			<input type="checkbox" name="filter" value="Doing"> Doing
-			<input type="checkbox" name="filter" value="Done">   Done
-		</form>
-		<hr>
-		<div class="tasklistelement">
-
-		</div>
-		<img src="add_icon.svg" height="20px">
+	<div id="users-page-link">
+		<a href="users.html">Users</a>
 	</div>
 </div>
-<div id="light" class="white_content">
-	<form id="addtask">
+<div class="userlists" id="userlists">
+</div>
+<div id="addtask-form-popup" class="white_content">
+	<form id="add-task" onsubmit="controller.submitAddTaskHandler(event); return false;">
 		Task name<br>
-		<input type="text" id="taskname" name="taskname" required>
+		<input type="text" id="task-name" name="task-name" required>
 		<br>
 		Task status<br>
-		<select id="taskstatus">
-			<option value="Todo">Todo</option>
+		<select id="task-status">
+			<option value="ToDo">Todo</option>
 			<option value="Doing">Doing</option>
 			<option value="Done">Done</option>
 		</select>
@@ -171,8 +33,30 @@
 		Due date<br>
 		<input type="date" id="duedate" name="duedate" required>
 	</form>
-	<button type="button" form="addtask" value="submit" id="submitbutton">Submit</button>
+	<button type="submit" form="add-task" value="submit" id="submit-button">Submit</button>
 	<button value="cancel" id="cancelbutton"> Cancel</button>
+</div>
+<div id="edittask-form-popup" class="white_content">
+	<form id="edit_task" onsubmit="controller.editTaskHandler(event); return false;">
+		Assigned User<br>
+		<select id="assigned-user">
+		</select>
+		<br>
+		Task name<br>
+		<input type="text" id="task_name" name="task-name" required>
+		<br>
+		Task status<br>
+		<select id="task_status">
+			<option value="ToDo">Todo</option>
+			<option value="Doing">Doing</option>
+			<option value="Done">Done</option>
+		</select>
+		<br>
+		Due date<br>
+		<input type="date" id="due_date" name="duedate" required>
+	</form>
+	<button type="submit" form="edit_task" value="submit" id="submit_button">Submit</button>
+	<button value="cancel" id="cancel_button"> Cancel</button>
 </div>
 <div id="fade" class="black_overlay">
 </div>
