@@ -193,16 +193,38 @@ body{
 	opacity: .80;
 	filter: alpha(opacity=80);
 }
-.white_content {
+.white_content_addtask {
 	display: none;
 	position: absolute;
 	top: 28%;
 	left: 38%;
 	width: 14%;
-	height: 22%;
+	height: 24%;
 	padding: 16px;
-	border: 16px solid #333469;
+	border: 8px solid rgb(0, 121, 191);
+	border-radius: 3px;
 	background-color: white;
 	z-index: 3;
 	overflow: auto;
+	line-height: 24px;
+}
+.popup-header{
+	font-size: 20px;
+	font-weight: 600;
+	text-align: center;
+}
+.white_content_edittask {
+	display: none;
+	position: absolute;
+	top: 28%;
+	left: 38%;
+	width: 14%;
+	height: 29%;
+	padding: 16px;
+	border: 8px solid rgb(0, 121, 191);
+	border-radius: 3px;
+	background-color: white;
+	z-index: 3;
+	overflow: auto;
+	line-height: 24px;
 }

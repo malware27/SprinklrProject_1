@@ -16,6 +16,7 @@
 <div class="userslist" id="userlist">
 </div>
 <div id="adduserpopup" class="white_content">
+	<div class="popup-header">Add user</div>
 	<form id="adduser" onsubmit="controller.submitAddUserHandler(event); return false;">
 		User name<br>
 		<input type="text" id="username" name="username" required>
@@ -29,6 +30,7 @@
 	<button value="cancel" id="cancelbutton" onclick="view.disableAddUserPopup(event)"> Cancel</button>
 </div>
 <div id="edituserpopup" class="white_content">
+	<div class="popup-header">Edit user</div>
 	<form id="edituser" onsubmit="controller.submitEditUserHandler(event); return false;">
 		User name<br>
 		<input type="text" id="user-name" name="username" required>

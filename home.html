@@ -18,7 +18,8 @@
 </div>
 <div class="userlists" id="userlists">
 </div>
-<div id="addtask-form-popup" class="white_content">
+<div id="addtask-form-popup" class="white_content_addtask">
+	<div class = "popup-header"> Add task</div>
 	<form id="add-task" onsubmit="controller.submitAddTaskHandler(event); return false;">
 		Task name<br>
 		<input type="text" id="task-name" name="task-name" required>
@@ -36,7 +37,8 @@
 	<button type="submit" form="add-task" value="submit" id="submit-button">Submit</button>
 	<button value="cancel" id="cancelbutton"> Cancel</button>
 </div>
-<div id="edittask-form-popup" class="white_content">
+<div id="edittask-form-popup" class="white_content_edittask">
+	<div class="popup-header">Edit Task</div>
 	<form id="edit_task" onsubmit="controller.editTaskHandler(event); return false;">
 		Assigned User<br>
 		<select id="assigned-user">
