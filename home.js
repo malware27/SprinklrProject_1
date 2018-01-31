@@ -184,6 +184,7 @@ let controller = {
         let confirmation = confirm("Do you really want to delete the selected task?");
         if (confirmation) {
             let id = parseInt(taskDiv.id.substr(4));
+            localStorage.removeItem(taskDiv.id);
             delete model.tasksData[id];
             view.removeTask(taskDiv);
         }
