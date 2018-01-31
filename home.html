@@ -18,7 +18,7 @@
 </div>
 <div class="userlists" id="userlists">
 </div>
-<div id="addtask-form-popup" class="white_content_addtask">
+<div id="addtask-form-popup" class="white-content-addtask">
 	<div class = "popup-header"> Add task</div>
 	<form id="add-task" onsubmit="controller.submitAddTaskHandler(event); return false;">
 		Task name<br>
@@ -37,27 +37,27 @@
 	<button type="submit" form="add-task" value="submit" id="submit-button">Submit</button>
 	<button value="cancel" id="cancelbutton"> Cancel</button>
 </div>
-<div id="edittask-form-popup" class="white_content_edittask">
+<div id="edittask-form-popup" class="white-content-edittask">
 	<div class="popup-header">Edit Task</div>
-	<form id="edit_task" onsubmit="controller.editTaskHandler(event); return false;">
+	<form id="edit-task" onsubmit="controller.editTaskHandler(event); return false;">
 		Assigned User<br>
 		<select id="assigned-user">
 		</select>
 		<br>
 		Task name<br>
-		<input type="text" id="task_name" name="task-name" required>
+		<input type="text" id="edit-task-name" name="task-name" required>
 		<br>
 		Task status<br>
-		<select id="task_status">
+		<select id="edit-task-status">
 			<option value="ToDo">Todo</option>
 			<option value="Doing">Doing</option>
 			<option value="Done">Done</option>
 		</select>
 		<br>
 		Due date<br>
-		<input type="date" id="due_date" name="duedate" required>
+		<input type="date" id="due-date" name="duedate" required>
 	</form>
-	<button type="submit" form="edit_task" value="submit" id="submit_button">Submit</button>
+	<button type="submit" form="edit-task" value="submit" id="submit_button">Submit</button>
 	<button value="cancel" id="cancel_button"> Cancel</button>
 </div>
 <div id="fade" class="black_overlay">

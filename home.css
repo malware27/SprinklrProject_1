@@ -193,7 +193,7 @@ body{
 	opacity: .80;
 	filter: alpha(opacity=80);
 }
-.white_content_addtask {
+.white-content-addtask {
 	display: none;
 	position: absolute;
 	top: 28%;
@@ -213,7 +213,7 @@ body{
 	font-weight: 600;
 	text-align: center;
 }
-.white_content_edittask {
+.white-content-edittask {
 	display: none;
 	position: absolute;
 	top: 28%;

@@ -1,13 +1,6 @@
-const TASK_STATUS_MAP = {
-    TO_DO: "ToDo",
-    DOING: "Doing",
-    DONE: "Done",
-};
+
 const MONTHS = ["January", "February","March", "April","May","June",
                 "July","August","September","October","November","December"];
-const TASK_STATUS_TODO = "ToDo";
-const TASK_STATUS_DOING = "Doing";
-const TASK_STATUS_DONE = "Done";
 let model = {
     usersData:
         {
@@ -70,12 +63,14 @@ let view = {
             let taskStatus = model.tasksData[task].taskStatus.toLowerCase();
             taskDiv.setAttribute("class", `tasklist tasklist${taskStatus}`);
             taskDiv.setAttribute("id", `task${task}`);
+            let date = new Date(model.tasksData[task].dueDate);
+            let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
             taskDiv.draggable = true;
             taskDiv.ondragstart = controller.drag;
             taskDiv.innerHTML = `<img src="delete_icon.png" height="20px" width="20px" class="delete_icon">
 					${model.tasksData[task].taskName}
 				<p class="duedate">
-					<strong>Due date: </strong>${model.tasksData[task].dueDate}
+					<strong>Due date: </strong>${dueDate}
 				</p>
 				<p class="taskdata">
 						${model.tasksData[task].taskStatus}
@@ -132,9 +127,9 @@ let view = {
         let light = document.getElementById("edittask-form-popup");
         popup.style.display = "none";
         light.style.display = "none";
-        let taskname = document.getElementById("task_name");
+        let taskname = document.getElementById("edit-task-name");
         taskname.value = "";
-        let dueDate = document.getElementById("due_date");
+        let dueDate = document.getElementById("due-date");
         dueDate.value = "";
     },
     renderNewTask: function (newTask) {
@@ -144,13 +139,15 @@ let view = {
         let taskDiv = document.createElement("div");
         taskDiv.setAttribute("class", `tasklist tasklist${newTask.taskStatus.toLowerCase()}`);
         taskDiv.setAttribute("id",`task${newTask.taskID}`);
+        let date = new Date(newTask.dueDate);
+        let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
         taskDiv.draggable = true;
         taskDiv.ondragstart = controller.drag;
         taskDiv.innerHTML =
             `<img src="delete_icon.png" height="20px" width="20px" class="delete_icon">
 					${newTask.taskName}
 				<p class="duedate">
-					<strong>Due date: </strong>${newTask.dueDate}
+					<strong>Due date: </strong>${dueDate}
 				</p>
 				<p class="taskdata">
 						${newTask.taskStatus}
@@ -164,12 +161,14 @@ let view = {
             let tasklist = newParent.getElementsByClassName("tasklistelement")[0];
             tasklist.appendChild(taskDiv);
         }
+        let date = new Date(model.tasksData[taskID].dueDate);
+        let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
         taskDiv.setAttribute("class",`tasklist tasklist${model.tasksData[taskID].taskStatus.toLowerCase()}`);
         taskDiv.innerHTML =
             `<img src="delete_icon.png" height="20px" width="20px" class="delete_icon">
 					${model.tasksData[taskID].taskName}
 				<p class="duedate">
-					<strong>Due date: </strong>${model.tasksData[taskID].dueDate}
+					<strong>Due date: </strong>${dueDate}
 				</p>
 				<p class="taskdata">
 						${model.tasksData[taskID].taskStatus}
@@ -201,8 +200,7 @@ let controller = {
         let taskstatus = document.getElementById("task-status");
         taskstatus = taskstatus.options[taskstatus.selectedIndex].value;
         let selectedUserID = document.getElementById("submit-button").dataset.selecteduser;
-        let date = new Date(document.getElementById("duedate").value);
-        let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
+        let dueDate = document.getElementById("duedate").value;
         let newTask = {
             taskName: taskname,
             assignedUser: selectedUserID,
@@ -232,16 +230,12 @@ let controller = {
         }
         assignedUserDropDown.innerHTML = dropDownOptions;
         view.enableViewTaskPopup();
-        let taskNameInput = document.getElementById("task_name");
+        let taskNameInput = document.getElementById("edit-task-name");
         taskNameInput.value = model.tasksData[taskID].taskName;
-        let taskStatusInput =document.getElementById("task_status");
+        let taskStatusInput =document.getElementById("edit-task-status");
         taskStatusInput.value = model.tasksData[taskID].taskStatus;
-        let dueDate = model.tasksData[taskID].dueDate;
-        var day = ("0" + dueDate.getDate()).slice(-2);
-        var month = ("0" + (dueDate.getMonth() + 1)).slice(-2);
-        var date = dueDate.getFullYear()+"-"+(month)+"-"+(day);
-        let dueDateInput = document.getElementById("due_date");
-        dueDateInput.value = date;
+        let dueDateInput = document.getElementById("due-date");
+        dueDateInput.value = model.tasksData[taskID].dueDate;
         let submitButton = document.getElementById("submit_button");
         submitButton.setAttribute("data-selectedtask",task.id);
     },
@@ -250,13 +244,12 @@ let controller = {
         let selectedTask = submitButton.dataset.selectedtask;
         let taskID = selectedTask.substr(4);
         let taskDiv = document.getElementById(selectedTask);
-        let taskName = document.getElementById("task_name").value;
-        let taskStatus = document.getElementById("task_status");
+        let taskName = document.getElementById("edit-task-name").value;
+        let taskStatus = document.getElementById("edit-task-status");
         let userID = document.getElementById("assigned-user");
         userID = userID.options[userID.selectedIndex].value;
         taskStatus = taskStatus.options[taskStatus.selectedIndex].value;
-        let date = new Date(document.getElementById("duedate").value);
-        let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
+        let dueDate = document.getElementById("due-date").value;
         model.tasksData[taskID].taskName = taskName;
         model.tasksData[taskID].taskStatus = taskStatus;
         model.tasksData[taskID].dueDate = dueDate;
@@ -265,6 +258,7 @@ let controller = {
         if(userID != model.tasksData[taskID].assignedUser.toString()){
             changeTaskUser = true;
             model.tasksData[taskID].assignedUser = userID;
+            localStorage.setItem(`task${taskID}`,JSON.stringify(model.tasksData[taskID]));
         }
         view.renderEditedTask(taskID,taskDiv,userID,changeTaskUser);
     },
