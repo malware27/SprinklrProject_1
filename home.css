@@ -42,7 +42,7 @@ body{
 	width: 30%;
 	font-family: "sans-serif";
 }
-.userlistelement{
+.userlist-element{
 	float: left;
 	height: 80%;
 	border-radius: 3px;
@@ -57,7 +57,7 @@ body{
 	position: relative;
 	width:270px;
 }
-.userlistheader{
+.userlist-header{
 	font-size: 22px;
 	font-family: "sans-serif";
 	text-align: center;
@@ -77,6 +77,8 @@ body{
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .tasktitle{
 	font-size: 18px;
@@ -108,13 +110,13 @@ body{
 	font-weight: 200;
 	font-family: "sans-serif";
 }
-.tasklisttodo{
+.tasklist-todo{
 	background-color: #ff9999;
 }
-.tasklistdoing{
+.tasklist-doing{
 	background-color: #99b3ff;
 }
-.tasklistdone{
+.tasklist-done{
 	background-color: #b3ffb3;
 }
 .duedate{
@@ -122,13 +124,13 @@ body{
 	font-weight: 200;
 	font-family: "sans-serif";
 }
-.delete_icon{
+.delete-icon{
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	display: none;
 }
-.tasklist:hover .delete_icon{
+.tasklist:hover .delete-icon{
 	display: block;
 	cursor: pointer;
 }
@@ -146,8 +148,9 @@ body{
 	width:50px;
 	height: 30px;
 }
-.tasklistelement{
-	height: 580px;
+.tasklist-element{
+	max-height: 580px;
+    min-height: 50px;
 	overflow: auto;
 }
 .popup{
@@ -180,7 +183,7 @@ body{
 	cursor: pointer;
 }
 
-.black_overlay {
+.black-overlay {
 	display: none;
 	position: absolute;
 	top: 0%;

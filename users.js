@@ -112,6 +112,8 @@ let controller = {
         for(let user in localStorage){
             if(!localStorage.hasOwnProperty(user))
                 continue;
+            if(user.charAt(0)=="t")
+                continue;
             let data = JSON.parse(localStorage.getItem(user));
             Object.defineProperty(model,user.substr(4), {
                 value: data,

@@ -31,7 +31,7 @@ let view = {
     renderUsers: function (userlists) {
         for (let user in model.usersData) {  //map
             let userElement = document.createElement("div");
-            userElement.setAttribute("class", "userlistelement");
+            userElement.setAttribute("class", "userlist-element");
             userElement.setAttribute("id", `user${user}`);
             userElement.innerHTML = `${model.usersData[user].userName} 
 		<form class="filtercheckbox"> 
@@ -41,7 +41,7 @@ let view = {
 			<input type="checkbox" name="filter" value="Done">   Done
 		</form>
 		<hr>
-		<div class="tasklistelement" ondragover="controller.allowDrop(event);" ondrop="controller.drop(event,this);">
+		<div class="tasklist-element" ondragover="controller.allowDrop(event);" ondrop="controller.drop(event,this);">
 		</div>
         <img src="add_icon.svg" height="20px" class="add-icon">`;
             userElement.onclick = this.clickHandler;
@@ -57,17 +57,16 @@ let view = {
                 return;
             }
             let userlist = document.getElementById(`user${assgndUser}`);
-            let tasklistelement = userlist.getElementsByClassName("tasklistelement")[0];
-            let add_icon = userlist.getElementsByClassName("add-icon")[0];
+            let tasklistelement = userlist.getElementsByClassName("tasklist-element")[0];
             let taskDiv = document.createElement("div");
             let taskStatus = model.tasksData[task].taskStatus.toLowerCase();
-            taskDiv.setAttribute("class", `tasklist tasklist${taskStatus}`);
+            taskDiv.setAttribute("class", `tasklist tasklist-${taskStatus}`);
             taskDiv.setAttribute("id", `task${task}`);
             let date = new Date(model.tasksData[task].dueDate);
             let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
             taskDiv.draggable = true;
             taskDiv.ondragstart = controller.drag;
-            taskDiv.innerHTML = `<img src="delete_icon.png" height="20px" width="20px" class="delete_icon">
+            taskDiv.innerHTML = `<img src="delete_icon.png" height="20px" width="20px" class="delete-icon">
 					${model.tasksData[task].taskName}
 				<p class="duedate">
 					<strong>Due date: </strong>${dueDate}
@@ -81,11 +80,8 @@ let view = {
 
     clickHandler: function (event) {
         let target = event.target;
-        if (target.className == "delete_icon") {
+        if (target.className == "delete-icon") {
             controller.deleteTaskHandler(event);
-        }
-        else if (target.tagName == "input") {
-            filterEventHandler(event);
         }
         else if (target.className == "add-icon") {
             controller.addTaskHandler(event);
@@ -94,7 +90,7 @@ let view = {
             controller.viewTask(target.closest(".tasklist"));
         }
         else if(target.parentNode.className == "filtercheckbox"){
-            controller.filterTasks(event);
+            controller.filterTasksHandler(event);
         }
     },
     removeTask: function (taskDiv) {
@@ -135,16 +131,16 @@ let view = {
     renderNewTask: function (newTask) {
         let selectedUserID = document.getElementById("submit-button").dataset.selecteduser;
         let selectedUser = document.getElementById(`user${selectedUserID}`);
-        let tasklist = selectedUser.getElementsByClassName("tasklistelement")[0];
+        let tasklist = selectedUser.getElementsByClassName("tasklist-element")[0];
         let taskDiv = document.createElement("div");
-        taskDiv.setAttribute("class", `tasklist tasklist${newTask.taskStatus.toLowerCase()}`);
+        taskDiv.setAttribute("class", `tasklist tasklist-${newTask.taskStatus.toLowerCase()}`);
         taskDiv.setAttribute("id",`task${newTask.taskID}`);
         let date = new Date(newTask.dueDate);
         let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
         taskDiv.draggable = true;
         taskDiv.ondragstart = controller.drag;
         taskDiv.innerHTML =
-            `<img src="delete_icon.png" height="20px" width="20px" class="delete_icon">
+            `<img src="delete_icon.png" height="20px" width="20px" class="delete-icon">
 					${newTask.taskName}
 				<p class="duedate">
 					<strong>Due date: </strong>${dueDate}
@@ -153,19 +149,21 @@ let view = {
 						${newTask.taskStatus}
 				</p>`;
         tasklist.appendChild(taskDiv);
+        let filterTarget = selectedUser.getElementsByClassName("filtercheckbox")[0];
+        controller.filterTasks(filterTarget);
     },
     renderEditedTask: function(taskID,taskDiv,userID,changeAssignedUser){
+        let newParent = document.getElementById(`user${userID}`);
         if(changeAssignedUser){
             taskDiv.parentNode.removeChild(taskDiv);
-            let newParent = document.getElementById(`user${userID}`);
-            let tasklist = newParent.getElementsByClassName("tasklistelement")[0];
+            let tasklist = newParent.getElementsByClassName("tasklist-element")[0];
             tasklist.appendChild(taskDiv);
         }
         let date = new Date(model.tasksData[taskID].dueDate);
         let dueDate = MONTHS[date.getMonth()]+" "+date.getDate()+", "+date.getFullYear();
-        taskDiv.setAttribute("class",`tasklist tasklist${model.tasksData[taskID].taskStatus.toLowerCase()}`);
+        taskDiv.setAttribute("class",`tasklist tasklist-${model.tasksData[taskID].taskStatus.toLowerCase()}`);
         taskDiv.innerHTML =
-            `<img src="delete_icon.png" height="20px" width="20px" class="delete_icon">
+            `<img src="delete_icon.png" height="20px" width="20px" class="delete-icon">
 					${model.tasksData[taskID].taskName}
 				<p class="duedate">
 					<strong>Due date: </strong>${dueDate}
@@ -174,6 +172,8 @@ let view = {
 						${model.tasksData[taskID].taskStatus}
 				</p>`;
         this.disableEditTaskPopup();
+        let filterTarget = newParent.getElementsByClassName("filtercheckbox")[0];
+        controller.filterTasks(filterTarget);
     }
 };
 
@@ -274,16 +274,21 @@ let controller = {
         let taskID = event.dataTransfer.getData("text");
         let taskDiv = document.getElementById(taskID);
         taskID = taskID.substr(4);
-        let userDiv = event.target.closest(".userlistelement");
+        let userDiv = event.target.closest(".userlist-element");
         let userID = userDiv.id.substr(4);
         model.tasksData[taskID].assignedUser = userID;
         localStorage.setItem(`task${taskID}`,JSON.stringify(model.tasksData[taskID]));
         element.appendChild(taskDiv);
+        let filterTarget = userDiv.getElementsByClassName("filtercheckbox")[0];
+        this.filterTasks(filterTarget);
     },
-    filterTasks: function (event) {
-        let user = event.target.closest(".userlistelement");
+    filterTasksHandler: function (event) {
+        this.filterTasks(event.target);
+    },
+    filterTasks: function (target) {
+        let user = target.closest(".userlist-element");
         let tasks = user.getElementsByClassName("tasklist");
-        let form = event.target.closest("form");
+        let form = target.closest("form");
         let checkBoxes = form.getElementsByTagName("input");
         for(let task = 0;task< tasks.length;task++) {
             let taskID = tasks[task].id;
@@ -324,16 +329,20 @@ let controller = {
               model.usersData[model.usersData.length] = userData;
               model.usersData.length = model.usersData.length + 1;
           }
-          else{
+      }
+      for(let data in localStorage){
+          if(data.charAt(0)=="t"){
               let taskData = JSON.parse(localStorage.getItem(data));
-              if(model.tasksData[taskData.id]) {
-                  model.tasksData[taskData.id] = taskData;
+              if(model.usersData[taskData.assignedUser] === undefined)
+              {
+                  localStorage.removeItem(data);
                   continue;
               }
               model.tasksData[model.tasksData.length] = taskData;
               model.tasksData.length = model.tasksData.length + 1;
           }
       }
+
     },
     init: function () {
         this.retrieveData();
